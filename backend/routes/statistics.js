@@ -1,6 +1,6 @@
 const express = require('express')
 const { createStatistic , getAllStatistics ,
-    getSingleStatistic } = require('../controllers/statisticsController')
+    getSingleStatistic, deleteStatistic, updateStatistic } = require('../controllers/statisticsController')
 
 
 const router = express.Router()
@@ -15,13 +15,9 @@ router.get('/:id', getSingleStatistic)
 router.post('/', createStatistic)
 
 // delete a statistic
-router.delete('/:id' ,(req, res) => {
-    res.json({mssg: 'Delete a new Statistic'})
-})
+router.delete('/:id' , deleteStatistic)
 
 // update a statistic
-router.patch('/:id' ,(req, res) => {
-    res.json({mssg: 'Update a Statistic'})
-})
+router.patch('/:id' , updateStatistic)
 
 module.exports = router
