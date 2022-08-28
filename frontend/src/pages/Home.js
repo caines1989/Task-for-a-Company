@@ -3,8 +3,6 @@ import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import columns from '../components/TableColumns'
 
-
-
 const Home = () => {
     const [statistics, setStatistics] = useState([])
 
