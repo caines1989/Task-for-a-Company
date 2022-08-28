@@ -1,9 +1,12 @@
 import {useEffect, useState} from 'react'
+import Box from '@mui/material/Box';
+import { DataGrid } from '@mui/x-data-grid';
+import columns from '../components/TableColumns'
 
-import StatisticsDetails from '../components/StatisticsDetails'
+
 
 const Home = () => {
-    const [statistics, setStatistics] = useState(null)
+    const [statistics, setStatistics] = useState([])
 
     useEffect(() => {
         const fetchStatistics = async () => {
@@ -19,13 +22,17 @@ const Home = () => {
     }, [])
 
     return (
-        <div className="home">
-            <div className="statistics">
-               {statistics && statistics.map((statistics) => (
-                <StatisticsDetails key={statistics._id} statistics={statistics} />
-               ))} 
-            </div>
-        </div>
+    <Box sx={{ height: 400, width: '100%', position: 'left' }}>
+      <DataGrid
+        rows={statistics}getRowId ={(row) => row._id}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        disableSelectionOnClick
+        experimentalFeatures={{ newEditingApi: true }}
+      />
+    </Box>
+ 
     )
 }
 
