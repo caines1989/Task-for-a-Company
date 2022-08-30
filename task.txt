@@ -16,9 +16,3 @@ we then pass the data through the POST function of the routes to test if we see 
 
 
 
-input fields
-
-date - automatic
-views - how many times people have clicked to view the stat
-clicks - how many clicks to view stat
-cost -how much it costs

@@ -4,7 +4,6 @@ const columns = [
       field: 'updatedAt',
       headerName: 'Date',
       width: 150,
-      editable: true,
     },
     {
       field: 'title',
@@ -16,19 +15,16 @@ const columns = [
       field: 'clicks',
       headerName: 'Clicks',
       width: 150,
-      editable: true,
     },
     {
       field: 'views',
       headerName: 'Views',
       width: 150,
-      editable: true,
     },
     {
       field: 'cost',
       headerName: 'Cost',
       width: 150,
-      editable: true,
     },
   
 ];
