@@ -1,91 +1,28 @@
-import { useState } from 'react'
-import {
-  Typography,
-  TextField,
-  Button,
-} from "@material-ui/core";
+import { useForm } from "react-hook-form";
+import { useStatistics } from '../providers/StatisticsProvider'
+  
+  const StatisticsForm = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const {statistics, addStatistics } = useStatistics();
 
-const StatisticsForm = () => {
-    const [title, setTitle] = useState('')
-    const [views, setViews] = useState('')
-    const [clicks, setClick] = useState('')
-    const [cost, setCost] = useState('')
-    const [error, setError] = useState(null)
-
-    const handleSubmit = async (e) => {
-      e.preventDefault()
-
-      const statistics = {title, views, clicks, cost}
-
-      const response = await fetch('/api/statistics' , {
-        method: 'POST',
-        body: JSON.stringify(statistics),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      const json = await response.json()
-
-      if (!response.ok){
-        setError(json.error)
-      }
-      if (response.ok){
-        setError(null)
-        setTitle('')
-        setViews('')
-        setClick('')
-        setCost('')
-        console.log('new stat added', json)
-      }
+    const onSubmit = async (data) => {
+      await addStatistics(data); 
     }
 
-  return (
-  <div className="statisticsForm">
-    <Typography variant="h5">Add a new stat here</Typography>
-    <form className="create" onSubmit={handleSubmit}>
-      <TextField
-        style={{ width: "200px", margin: "5px" }}
-        type="text"
-        label="Title"
-        variant="outlined"
-        onChange={(e) => setTitle(e.target.value)}
-        value={title}
-      />
-      <br />
-      <TextField
-        style={{ width: "200px", margin: "5px" }}
-        type="number"
-        label="Views"
-        variant="outlined"
-        onChange={(e) => setViews(e.target.value)}
-        value={views}
-      />
-      <br />
-      <TextField
-        style={{ width: "200px", margin: "5px" }}
-        type="number"
-        label="Clicks"
-        variant="outlined"
-        onChange={(e) => setClick(e.target.value)}
-        value={clicks}
-      />
-      <br />
-      <TextField
-        style={{ width: "200px", margin: "5px" }}
-        type="number"
-        label="Cost"
-        variant="outlined"
-        onChange={(e) => setCost(e.target.value)}
-        value={cost}
-      />
-      <br />
-      <Button type="submit" variant="contained" color="primary">
-        save
-      </Button>
-      {error && <div className="error">{error}</div>}
-    </form>
-  </div>
-  )
+      return (
+        /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {/* register your input into the hook by invoking the "register" function */}
+          <input defaultValue="date" type="date"{...register("title", { required: true })} />
+          <input defaultValue="views" type="number"{...register("views", { required: true })} />
+          <input defaultValue="clicks" type="number"{...register("clicks", { required: true })} />
+          <input defaultValue="cost" type="number" step=".01" label="cost"{...register("cost", { required: true })} />
+          {/* errors will return when field validation fails  */}
+          {errors.exampleRequired && <span>This field is required</span>}
+          
+          <input type="submit" />
+        </form>
+      );
 }
 
 export default StatisticsForm

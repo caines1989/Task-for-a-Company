@@ -7,7 +7,7 @@ const columns = [
     },
     {
       field: 'title',
-      headerName: 'Title',
+      headerName: 'Date',
       width: 150,
       editable: true,
     },

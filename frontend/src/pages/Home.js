@@ -1,24 +1,11 @@
-import {useEffect, useState} from 'react'
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import columns from '../components/constants/TableColumns'
 import StatisticsForm  from '../components/StatisticsForm'
+import { useStatistics } from '../providers/StatisticsProvider'
 
 const Home = () => {
-    const [statistics, setStatistics] = useState([])
-
-    useEffect(() => {
-        const fetchStatistics = async () => {
-            const response = await fetch('/api/statistics')
-            const json = await response.json()
-
-            if (response.ok) {
-                setStatistics(json)
-            }
-        }
-        
-        fetchStatistics()
-    }, [])
+    const {statistics } = useStatistics();
 
     return (
     <Box sx={{ height: 400, width: '56%', display: 'block', position: 'absolute' }}>
