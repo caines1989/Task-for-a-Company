@@ -1,20 +1,12 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-
+import { Container } from "@mui/material";
+import Home from "./components/pages/Home";
 
 function App() {
   return (
     <div className="App">
-     <BrowserRouter>
-       <Navbar />
-        <div className="pages">
-          <Routes>
-            <Route path="/" element={<Home />}/>
-            <Route path="/:id"/>
-          </Routes>
-        </div>
-     </BrowserRouter>
+      <Container>
+        <Home />
+      </Container>
     </div>
   );
 }

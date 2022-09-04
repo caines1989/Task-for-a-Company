@@ -1,23 +1,27 @@
-const express = require('express')
-const { createStatistic , getAllStatistics ,
-    getSingleStatistic, deleteStatistic, updateStatistic } = require('../controllers/statisticsController')
+const express = require("express");
+const {
+  createStatistic,
+  getAllStatistics,
+  getSingleStatistic,
+  deleteStatistic,
+  updateStatistic,
+} = require("../controllers/statisticsController");
 
-
-const router = express.Router()
+const router = express.Router();
 
 // get all statistics
-router.get('/', getAllStatistics)
+router.get("/", getAllStatistics);
 
 // get a single statistic
-router.get('/:id', getSingleStatistic)
+router.get("/:id", getSingleStatistic);
 
 // post a new statistic
-router.post('/', createStatistic)
+router.post("/", createStatistic);
 
 // delete a statistic
-router.delete('/:id' , deleteStatistic)
+router.delete("/:id", deleteStatistic);
 
 // update a statistic
-router.patch('/:id' , updateStatistic)
+router.patch("/:id", updateStatistic);
 
-module.exports = router
+module.exports = router;
