@@ -7,7 +7,11 @@ I was using postman to test out any routes I created for the API for the POST, G
 which I then set the functions for them in the code inside of the controllers file that assign to each route rather then bloating them in the routes themself as it would create mess in the file as we want to make it more readable,
 
 I then added mongoose to connect to our MongoDB database and created the models on which data to accept for each property type.
-we then pass the data through the POST function of the routes to test if we see any data come through the body.
+we then pass the data through the GET function of the routes to test if we see any data come through as the body.
+
+once confirmed we then pass the data throgh as a DataGrid (Table) to assign each value into a column with the correct data assigned to the row's. 
+Also creating a form for input data to be POST requested into the table. While also setting the states (Provider) to wrap around the App component so we can manage it 
+better for the UX.
 
 
 
