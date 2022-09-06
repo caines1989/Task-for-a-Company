@@ -4,8 +4,8 @@
 ```
  npm install
 ```
-# open 2 terminals
- in your first terminal
+## open 2 terminals
+# in your first terminal
  ```
  cd backend/ 
  npm install
